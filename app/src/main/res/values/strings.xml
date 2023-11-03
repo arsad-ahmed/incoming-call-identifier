@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">call detector</string>
+    <string name="welcome_to_incoming_call_detector">Welcome to incoming call detector</string>
 </resources>

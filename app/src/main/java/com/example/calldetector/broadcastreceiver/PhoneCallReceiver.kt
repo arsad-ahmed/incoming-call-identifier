@@ -18,6 +18,7 @@ class PhoneCallReceiver : BroadcastReceiver()
     {
 
         sharedPreferenceHelper=SharedPreferenceHelper(context)
+
         if (intent.action == TelephonyManager.ACTION_PHONE_STATE_CHANGED)
         {
             val message=sharedPreferenceHelper.getStatus()

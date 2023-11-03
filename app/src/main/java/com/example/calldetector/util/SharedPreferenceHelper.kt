@@ -3,7 +3,7 @@ package com.example.calldetector.util
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPreferenceHelper(private val context:Context)
+class SharedPreferenceHelper(context:Context)
 {
     private val sharedPreferences:SharedPreferences=
         context.getSharedPreferences(MY_PREFERENCE, Context.MODE_PRIVATE)

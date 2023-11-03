@@ -17,7 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.calldetector.broadcastreceiver.PhoneCallReceiver
 import com.example.calldetector.customdialog.StatusDialog
-import com.example.calldetector.util.PHONE_STATE_PERMISSION_CODE
+import com.example.calldetector.util.PHONE_STATE_PERMISSION
 import com.example.calldetector.util.SharedPreferenceHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -37,19 +37,17 @@ class MainActivity:AppCompatActivity()
         setContentView(R.layout.activity_main)
 
         fab=findViewById(R.id.fab)
-
-
-
         phoneCallReceiver=PhoneCallReceiver()
-        //requestPhoneStatePermission()
+        
         permission()
         sharedPreferenceHelper=SharedPreferenceHelper(this)
 
-        if (sharedPreferenceHelper.isEnabled()) {
+        if (sharedPreferenceHelper.isEnabled()) 
+        {
             registerReceiver(phoneCallReceiver, IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED))
         }
+        
         statusDialog=StatusDialog(this)
-
         fab.setOnClickListener {statusDialog.show()}
 
     }
@@ -89,6 +87,7 @@ class MainActivity:AppCompatActivity()
                     sharedPreferenceHelper.makeEnable(false)
                     item.isChecked=false
                     unregisterReceiver(phoneCallReceiver)
+                    Toast.makeText(this, "deactivated", Toast.LENGTH_SHORT).show()
 
 
                 }
@@ -99,6 +98,7 @@ class MainActivity:AppCompatActivity()
                     sharedPreferenceHelper.makeEnable(true)
                     val filter=IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
                     registerReceiver(phoneCallReceiver, filter)
+                    Toast.makeText(this, "activated", Toast.LENGTH_SHORT).show()
                 }
             }
             return true
@@ -120,7 +120,7 @@ class MainActivity:AppCompatActivity()
         }
         else
         {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_PHONE_STATE), PHONE_STATE_PERMISSION_CODE)
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_PHONE_STATE), PHONE_STATE_PERMISSION)
         }
     }
 
@@ -128,7 +128,7 @@ class MainActivity:AppCompatActivity()
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == PHONE_STATE_PERMISSION_CODE)
+        if (requestCode == PHONE_STATE_PERMISSION)
         {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
@@ -138,7 +138,6 @@ class MainActivity:AppCompatActivity()
             {
                 Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
                 if (!ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_PHONE_STATE)) {
-                    // User checked "Never ask again", show a dialog with a button to open settings
                     val dialog = AlertDialog.Builder(this)
                         .setTitle("Permission required")
                         .setMessage("You need to grant the phone state permission to use this feature. Please open settings and enable it.")

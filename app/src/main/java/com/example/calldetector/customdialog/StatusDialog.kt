@@ -31,11 +31,6 @@ class StatusDialog(context:Context):Dialog(context)
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
-        super.onCreate(savedInstanceState)
-
-    }
 
     private fun addStatus()
     {

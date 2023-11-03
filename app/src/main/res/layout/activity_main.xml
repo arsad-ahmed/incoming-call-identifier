@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginHorizontal="16dp"
-        android:text="Welcome to incoming call notifier"
+        android:text="@string/welcome_to_incoming_call_detector"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
