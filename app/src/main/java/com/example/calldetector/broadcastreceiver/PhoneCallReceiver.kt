@@ -34,7 +34,7 @@ class PhoneCallReceiver : BroadcastReceiver()
                                 {
                                     TelephonyManager.CALL_STATE_RINGING ->
                                     {
-                                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
                                     }
                                 }
                             }
