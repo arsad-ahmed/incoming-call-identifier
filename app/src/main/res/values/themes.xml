@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.CallDetector" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <style name="Base.Theme.Dnd" parent="Theme.AppCompat.DayNight.DarkActionBar">
 
-    <style name="Theme.CallDetector" parent="Base.Theme.CallDetector" />
+        <item name="colorPrimary">@color/primaryDark</item>
+        <!-- This will change the status bar color -->
+        <item name="colorPrimaryDark">@color/primary</item>
+    </style>
 </resources>
